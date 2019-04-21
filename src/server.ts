@@ -1,16 +1,17 @@
-import express from 'express';
-import { Request, Response } from 'express';
+import app from "./app";
 
-export default class Server {
-  constructor(readonly port: number) {}
+app.set("port", process.env.PORT || 5000);
 
-  start(): void {
-    const app = express();
-    app.get('/', (req: Request, res: Response) => {
-      res.send('test');
-    });
-    app.listen(this.port, () => {
-        console.log(`Server run on port: ${this.port}`);
-    })
-  }
-}
+/**
+ * Start Express server.
+ */
+const server = app.listen(app.get("port"), () => {
+  console.log(
+    "  App is running at http://localhost:%d in %s mode",
+    app.get("port"),
+    app.get("env")
+  );
+  console.log("  Press CTRL-C to stop\n");
+});
+
+export default server;

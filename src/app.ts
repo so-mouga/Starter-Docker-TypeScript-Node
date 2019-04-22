@@ -6,7 +6,8 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import { xssProtection } from 'lusca';
 import { Response, Request, NextFunction } from 'express';
-
+import logger from './util/logger';
+import morgan from 'morgan';
 // Controllers
 import apiController from './controllers/api.controller';
 
@@ -17,6 +18,7 @@ const app = express();
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'twig');
 
+app.use(morgan('dev'));
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

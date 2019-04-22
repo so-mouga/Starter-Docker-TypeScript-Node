@@ -25,7 +25,9 @@
     "express-jwt": "^5.3.1",
     "http-errors": "^1.7.2",
     "lusca": "^1.6.1",
-    "twig": "^1.13.2"
+    "morgan": "^1.9.1",
+    "twig": "^1.13.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/compression": "0.0.36",
@@ -35,10 +37,12 @@
     "@types/express-jwt": "0.0.42",
     "@types/http-errors": "^1.6.1",
     "@types/lusca": "^1.5.0",
+    "@types/morgan": "^1.7.35",
     "@types/node": "^11.13.6",
     "@types/prettier": "^1.16.3",
     "@types/shelljs": "^0.8.5",
     "@types/twig": "^1.12.2",
+    "@types/winston": "^2.4.4",
     "concurrently": "^4.1.0",
     "download": "^7.1.0",
     "https": "^1.0.0",

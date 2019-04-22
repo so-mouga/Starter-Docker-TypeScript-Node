@@ -2,19 +2,19 @@ import winston from 'winston';
 
 const options = {
   console: {
-    level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
+    colorize: true,
     handleExceptions: true,
     json: false,
-    colorize: true,
+    level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
   },
   file: {
-    level: 'info',
+    colorize: false,
     filename: 'logs/debug.log',
     handleExceptions: true,
     json: true,
-    maxsize: 5242880, // 5MB
+    level: 'info',
     maxFiles: 5,
-    colorize: false,
+    maxsize: 5242880, // 5MB
   },
 };
 
@@ -25,8 +25,8 @@ const stream = {
 };
 
 const logger = winston.createLogger({
-  transports: [new winston.transports.Console(options.console), new winston.transports.File(options.file)],
   exitOnError: false, // do not exit on handled exceptions
+  transports: [new winston.transports.Console(options.console), new winston.transports.File(options.file)],
 });
 
 export default logger;

@@ -1,13 +1,11 @@
-import express from 'express';
 import compression from 'compression';
-import path from 'path';
-import cors from 'cors';
-import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express, { NextFunction, Request, Response } from 'express';
+import createError from 'http-errors';
 import { xssProtection } from 'lusca';
-import { Response, Request, NextFunction } from 'express';
-import logger from './util/logger';
 import morgan from 'morgan';
+import path from 'path';
 // Controllers
 import apiController from './controllers/api.controller';
 
@@ -28,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // App routes
-app.get('/', function(req: Request, res: Response) {
+app.get('/', (req: Request, res: Response) => {
   res.render('index', { title: 'Express - TS' });
 });
 
@@ -41,7 +39,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // error handler
-app.use(function(err: createError.HttpError, req: Request, res: Response, next: NextFunction) {
+app.use((err: createError.HttpError, req: Request, res: Response, next: NextFunction) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

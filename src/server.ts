@@ -1,7 +1,5 @@
 import app from './app';
 
-app.set('port', process.env.PORT || 5000);
-
 /**
  * Start Express server.
  */

@@ -6,11 +6,14 @@ import createError from 'http-errors';
 import { xssProtection } from 'lusca';
 import morgan from 'morgan';
 import path from 'path';
+import { PORT } from './util/config';
+
 // Controllers
 import apiController from './controllers/api.controller';
 
 // Create Express server
 const app = express();
+app.set('port', PORT || 3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
